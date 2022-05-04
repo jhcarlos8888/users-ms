@@ -26,7 +26,7 @@ public class UsuarioService {
 
         //Se crea un objeto lista para buscar un usuario por su nombre donde se llamara a el repositorio
         //y se le pasara como parametro el nombre que se entrego en el metodo createUsuario
-        List<Usuarios>  usuariosByUsuario = iUsuariosRepository.findByUsuario(usuario.getUsuario());
+        List<Usuarios>  usuariosByUsuario = iUsuariosRepository.findByUser(usuario.getUser());
 
         //se crea entonces una condicional en donde si la lista usuariosByName no obtuvo algun dato
         //es decir si la lista NO esta vacia entonces significa que ese usuario no existe
@@ -41,6 +41,8 @@ public class UsuarioService {
 
     }
 
+
+
     /**
      * Metodo para obtener un listado de usuarios segun el nombre entregado
      * @param nombre
@@ -48,7 +50,7 @@ public class UsuarioService {
      */
     public List<Usuarios> getByNombre(String nombre){
 
-        return iUsuariosRepository.findByName(nombre);
+        return iUsuariosRepository.findByNombre(nombre);
 
     }
 

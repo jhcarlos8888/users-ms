@@ -1,12 +1,12 @@
 package com.proyectoCoin.usersms.usersms.model;
 
+import javax.persistence.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
+
+
+
 
 //Se asocia como una entidad
 @Entity
@@ -20,10 +20,11 @@ public class Usuarios implements Serializable {
 
     //Se relaciona el campo como un ID
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     //Se coloca el nombre tal cual esta en la base de datos
     @Column(name = "id_usuario")
     //Campo id
-    private String id;
+    private Long id;
     @Column(name = "str_nombre")
     private String nombre;
 
@@ -39,16 +40,16 @@ public class Usuarios implements Serializable {
     @Column(name = "str_ciudad")
     private String ciudad;
 
-    @Column(name = "int_TlCelular")
-    private int TlCelular;
 
     @Column(name = "str_usuario")
-    private String usuario;
+    private String user;
 
     //Columna para guardar las fechas en que se crean y modifican las tablas
     //de bases de datos en el codigo
     @Column(name = "created_at")
+
     private Date createdAt;
+
 
 
     //Se crea constructor de clase
@@ -56,24 +57,25 @@ public class Usuarios implements Serializable {
     }
 
     //Constructor con todos sus atributos
-    public Usuarios(String id, String nombre, String apellido, String direccion, String pais, String ciudad, int tlCelular, String usuario) {
+
+
+    public Usuarios(Long id, String nombre, String apellido, String direccion, String pais, String ciudad, String user, Date createdAt) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.direccion = direccion;
         this.pais = pais;
         this.ciudad = ciudad;
-        TlCelular = tlCelular;
-        this.usuario = usuario;
+        this.user = user;
+        this.createdAt = createdAt;
     }
 
-
     /*** Se generan los getters and Setters */
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -117,24 +119,25 @@ public class Usuarios implements Serializable {
         this.ciudad = ciudad;
     }
 
-    public int getTlCelular() {
-        return TlCelular;
+
+
+    public String getUser() {
+        return user;
     }
 
-    public void setTlCelular(int tlCelular) {
-        TlCelular = tlCelular;
+    public void setUser(String user) {
+        this.user = user;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     /***Fin getters and Setters*/
-
 
 
 

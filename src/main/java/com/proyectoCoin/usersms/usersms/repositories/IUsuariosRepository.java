@@ -13,7 +13,7 @@ import java.util.List;
 
 //Se crea una interface para poder interactuar con la base de datos, se pasa como parametro
 //la clase Usuarios y el tipo de dato que corresponde a su llave primaria que seria un String
-public interface IUsuariosRepository extends CrudRepository<Usuarios, String> {
+public interface IUsuariosRepository extends CrudRepository<Usuarios, Long> {
 
     //Metodo para traer una lista de usuario segun el nombre
     //Anotacion para traer de base de datos informacion
@@ -23,11 +23,16 @@ public interface IUsuariosRepository extends CrudRepository<Usuarios, String> {
     //Entonces en la consulta Query se esta diciendo que lo que se le pase como
     //parametro dentro del metodo findByName sera lo que se consultara en la tabla
     // de la base de datos
-    @Query( "SELECT objUsuario FROM Usuarios objUsuario WHERE objUsuario.usuario = :usuario")
-    List<Usuarios> findByUsuario(String usuario);
+
+    /**Algo muy urgente que se tiene que tener en cuenta es que para realizar una busqueda de un campo
+     * se tiene que especificar muy bien el nombre del metodo, es decir findByUser es una palabra reservada
+     * en donde la ultima palabra User tiene que ser igual como se nombraron los campos de la entidad Usuarios
+     */
+    @Query( "SELECT objUsuario FROM Usuarios objUsuario WHERE objUsuario.user = :user")
+    List<Usuarios> findByUser(String user);
 
 
     //Se crea un metodo para buscar un usuario por su nombre
-    List<Usuarios> findByName(String nombre);
+    List<Usuarios> findByNombre(String nombre);
 
 }
